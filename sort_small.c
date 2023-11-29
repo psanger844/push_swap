@@ -6,7 +6,7 @@
 /*   By: psanger <psanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:53:16 by psanger           #+#    #+#             */
-/*   Updated: 2023/11/28 21:17:33 by psanger          ###   ########.fr       */
+/*   Updated: 2023/11/29 15:30:12 by psanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ void	sort_small(t_list **list_a, t_list **list_b)
 	int		len;
 
 	len = lst_len(list_a);
+	if (is_sorted(list_a, len) == 1)
+		return ;
 	if (len <= 2)
 	{
 		sort_two(list_a);

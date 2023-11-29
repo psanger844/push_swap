@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS = list_checker.c list_func.c push_swap.c \
 		reverse_rotate_operators.c rotate_operators.c sort_small.c \
 		sort_two_t_five.c swap_push_operations.c \
-		a_quicksort_improoved.c \
+		quicksort.c \
 
 OBJS = $(SRCS:.c=.o)
 

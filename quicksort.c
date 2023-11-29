@@ -6,7 +6,7 @@
 /*   By: psanger <psanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:26:23 by psanger           #+#    #+#             */
-/*   Updated: 2023/11/28 13:37:26 by psanger          ###   ########.fr       */
+/*   Updated: 2023/11/29 15:14:07 by psanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,56 +35,56 @@ void	reverse_sort_two(t_list **list_b)
 		sb(*list_b);
 }
 
-void	a_quick(t_list **list_a, t_list **list_b, int len, int median)
+void	a_quick(t_list **l_a, t_list **l_b, int len, int median)
 {
-	int	pushed;
+	int	p;
 	int	j;
 
 	j = 1;
-	pushed = 0;
-	median = get_median(list_a, len, 'u');
+	p = 0;
+	median = get_median(l_a, len, 'u');
 	if (len == 2)
-		sort_two(list_a);
-	if (lst_len(list_a) == 3)
-		sort_three(list_a);
-	if (is_sorted(list_a, len) == 1)
+		sort_two(l_a);
+	if (lst_len(l_a) == 3)
+		sort_three(l_a);
+	if (is_sorted(l_a, len) == 1)
 		return ;
-	while (pushed != len / 2)
+	while (p != len / 2)
 	{
-		if ((*list_a)->content < median && ++pushed)
-			pb(list_a, list_b);
+		if ((*l_a)->content < median && ++p)
+			pb(l_a, l_b);
 		else if (j++)
-			ra(list_a);
+			ra(l_a);
 	}
 	while (j-- > 1)
-		rra(list_a);
-	return (a_quick(list_a, list_b, (len - pushed), 0), b_quick(list_a, list_b, pushed, 0));
+		rra(l_a);
+	return (a_quick(l_a, l_b, (len - p), 0), b_quick(l_a, l_b, p, 0));
 }
 
-void	b_quick(t_list **list_a, t_list **list_b, int len, int median)
+void	b_quick(t_list **l_a, t_list **l_b, int len, int median)
 {
-	int	pushed;
+	int	p;
 	int	j;
 
 	j = 1;
-	pushed = 0;
-	median = get_median(list_b, len, 'l');
+	p = 0;
+	median = get_median(l_b, len, 'l');
 	if (len == 2)
-		reverse_sort_two(list_b);
-	if (is_reverse_sorted(list_a, len) == 1)
+		reverse_sort_two(l_b);
+	if (is_reverse_sorted(l_a, len) == 1)
 	{
 		while (len-- > 0)
-			pa(list_a, list_b);
+			pa(l_a, l_b);
 		return ;
 	}
-	while (len / 2 + len % 2 != pushed)
+	while (len / 2 + len % 2 != p)
 	{
-		if ((*list_b)->content >= median && ++pushed)
-			pa(list_a, list_b);
+		if ((*l_b)->content >= median && ++p)
+			pa(l_a, l_b);
 		else if (j++)
-			rb(list_b);
+			rb(l_b);
 	}
 	while (j-- > 1)
-		rrb(list_b);
-	return (a_quick(list_a, list_b, pushed, 0), b_quick(list_a, list_b, (len - pushed), 0));
+		rrb(l_b);
+	return (a_quick(l_a, l_b, p, 0), b_quick(l_a, l_b, (len - p), 0));
 }

@@ -6,7 +6,7 @@
 /*   By: psanger <psanger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:49:54 by psanger           #+#    #+#             */
-/*   Updated: 2023/11/29 14:17:18 by psanger          ###   ########.fr       */
+/*   Updated: 2023/11/29 15:34:09 by psanger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,8 @@ int	main(int argc, char **argv)
 	t_list	*list_a;
 	t_list	*list_b;
 	char	**arguments;
-	int		temp;
 
 	list_b = ft_lstnew(0);
-	temp = 0;
 	i = 0;
 	arguments = NULL;
 	if (argc <= 1)
@@ -80,4 +78,3 @@ int	main(int argc, char **argv)
 	ft_lstclear(&list_b);
 	return (0);
 }
-
